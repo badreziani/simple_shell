@@ -12,9 +12,10 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av)
 	char *line = NULL;
 	size_t n = 0;
 
-	while (1)
+	while (nread != -1)
 	{
-		_puts("$ ");
+		if (isatty(STDIN_FILENO))
+			_puts("$ ");
 		nread = getline(&line, &n, stdin);
 		if (nread == EOF)
 		{
