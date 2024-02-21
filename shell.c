@@ -11,21 +11,30 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av)
 	ssize_t nread = 0;
 	char *line = NULL;
 	size_t n = 0;
+	char *exit;
+	int isCMP;
 
-	while (nread != -1)
+	exit = "exit";
+	while (1)
 	{
-		if (isatty(STDIN_FILENO))
-			_puts("$ ");
+		_puts("($) ");
 		nread = getline(&line, &n, stdin);
-		if (nread == EOF)
-		{
-			fflush(stdin);
+		if (nread == -1){
 			break;
 		}
-		execute_cmd(line);
-		fflush(stdin);
+		else {
+			if (line[nread - 1] == '\n') {
+				line[nread - 1] = '\0';
+			}
+			isCMP = _strcmp(line,exit);
+			if (isCMP == 0) {
+				break;
+			}else{
+				execute_cmd(line);
+			}
+		}
+		free(line);
 	}
-	free(line);
 	return (0);
 }
 

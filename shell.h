@@ -7,6 +7,7 @@
 #include <string.h>
 size_t _strlen(char *);
 ssize_t _puts(char *);
+int _strcmp(char *s1, char *s2); 
 char *_strcpy(char *, char *);
 void execute_cmd(char *);
 #endif
