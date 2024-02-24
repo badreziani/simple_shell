@@ -24,14 +24,17 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av)
 			line = NULL;
 			return (status);
 		}
-		args = split_line(line);
+		args = tokenize(line);
 		if (!args)
 		{
 			free(line);
-			return (status);
+			continue;
 		}
 		while (args[i])
-			_puts(args[i++]);
+		{
+			printf("=>%s\n",args[i]);
+			i++;
+		}
 		free(line);
 		free_array(args, i);
 	}

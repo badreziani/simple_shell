@@ -7,8 +7,16 @@
 char **tokenize(char *line)
 {
 	char **tokens = NULL, *token = NULL, *d = " \t\n";
+	char *copy = NULL;
 	size_t i = 0, j = 0;
 
+	if (!line)
+		return (NULL);
+	copy = _strdup(line);
+	if (!copy)
+	{
+		return (NULL);
+	}
 	i = count_tokens(line);
 	if (i == 0)
 		return (NULL);
@@ -17,13 +25,14 @@ char **tokenize(char *line)
 	{
 		return (NULL);
 	}
-	token = strtok(line, d);
+	token = strtok(copy, d);
 	while (token)
 	{
 		tokens[j] = _strdup(token);
-		j++;
 		token = strtok(NULL, d);
+		j++;
 	}
+	free(copy), copy = NULL;
 	tokens[j] = NULL;
 	return (tokens);
 }

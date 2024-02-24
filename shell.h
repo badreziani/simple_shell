@@ -14,5 +14,4 @@ char *prompt(void);
 void free_array(char **, size_t);
 size_t count_tokens(char *);
 char **tokenize(char *);
-char **split_line(char *);
 #endif
