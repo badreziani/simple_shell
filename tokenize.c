@@ -15,27 +15,15 @@ char **tokenize(char *line)
 	tokens = malloc(sizeof(char *) * (i + 1));
 	if (!tokens)
 	{
-		free(line), line = NULL;
-		free(token), token = NULL;
 		return (NULL);
 	}
 	token = strtok(line, d);
 	while (token)
 	{
-		tokens[j] = malloc(sizeof(char) * (1 + _strlen(token)));
-		if (!tokens[j])
-		{
-			free_array(tokens, j);
-			free(token), token = NULL;
-			free(line), line = NULL;
-			return (NULL);
-		}
-		tokens[j] = strcpy(tokens[j], token);
+		tokens[j] = _strdup(token);
 		j++;
 		token = strtok(NULL, d);
 	}
-	free(token), token = NULL;
-	free(line), line = NULL;
 	tokens[j] = NULL;
 	return (tokens);
 }
