@@ -5,9 +5,14 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <string.h>
-size_t _strlen(char *);
+size_t _strlen(const char *);
 ssize_t _puts(char *);
-int _strcmp(char *s1, char *s2); 
-char *_strcpy(char *, char *);
-void execute_cmd(char *);
+char *_strdup(const char *);
+int _strcmp(char *, char *);
+char *_strcpy(char *, const char *);
+char *prompt(void);
+void free_array(char **, size_t);
+size_t count_tokens(char *);
+char **tokenize(char *);
+char **split_line(char *);
 #endif

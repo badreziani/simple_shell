@@ -8,33 +8,32 @@
  */
 int main(__attribute__((unused))int ac, __attribute__((unused))char **av)
 {
-	ssize_t nread = 0;
 	char *line = NULL;
-	size_t n = 0;
-	char *exit;
-	int isCMP;
+	char **args = NULL;
+	int status = 0;
+	size_t i = 0;
 
-	exit = "exit";
 	while (1)
 	{
-		_puts("($) ");
-		nread = getline(&line, &n, stdin);
-		if (nread == -1){
-			break;
+		line = prompt();
+		if (!line)
+		{
+			if (isatty(0) == 1)
+				_puts("\n");
+			free(line);
+			line = NULL;
+			return (status);
 		}
-		else {
-			if (line[nread - 1] == '\n') {
-				line[nread - 1] = '\0';
-			}
-			isCMP = _strcmp(line,exit);
-			if (isCMP == 0) {
-				break;
-			}else{
-				execute_cmd(line);
-			}
+		args = split_line(line);
+		if (!args)
+		{
+			free(line);
+			return (status);
 		}
+		while (args[i])
+			_puts(args[i++]);
 		free(line);
+		free_array(args, i);
 	}
 	return (0);
 }
-
