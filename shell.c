@@ -11,7 +11,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 {
 	char *line = NULL;
 	char **tokens = NULL;
-	int status = 0;
+	int estatus = 0;
 
 	while (1)
 	{
@@ -20,9 +20,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 		{
 			if (isatty(0) == 1)
 				_puts("\n");
-			free(line);
-			line = NULL;
-			return (status);
+			return (estatus);
 		}
 		tokens = split_line(line);
 		if (!tokens)
@@ -31,7 +29,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 			continue;
 		}
 		free(line);
-		status = execute_cmd(tokens, argv, env);
+		estatus = execute_cmd(tokens, argv, env);
 	}
 	return (0);
 }
