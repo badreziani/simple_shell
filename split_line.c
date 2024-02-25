@@ -10,8 +10,6 @@ char **split_line(char *line)
 	char *copy;
 	size_t i = 0, j = 0;
 
-	if (!line)
-		return (NULL);
 	copy = _strdup(line);
 	if (!copy)
 	{
