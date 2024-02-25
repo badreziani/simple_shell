@@ -4,12 +4,17 @@
  * @arr: array of strings
  * Return: nothing
  */
-void free_array(char **arr, size_t len)
+void free_array(char **arr)
 {
-	size_t i;
+	size_t i = 0;
+
 	if (!arr)
 		return;
-	for (i = 0; i < len; i++)
-		free(arr[i]), arr[i] = NULL;
+	while (arr[i])
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+		i++;
+	}
 	free(arr), arr = NULL;
 }

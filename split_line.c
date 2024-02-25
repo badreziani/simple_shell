@@ -1,13 +1,13 @@
 #include "shell.h"
 /**
- * tokenize - splits a string tokens
+ * split_line - splits a string tokens
  * @line: the array to be freed
  * Return: Array of tokens
  */
-char **tokenize(char *line)
+char **split_line(char *line)
 {
-	char **tokens = NULL, *token = NULL, *d = " \t\n";
-	char *copy = NULL;
+	char **tokens = NULL, *token, *d = " \t\n";
+	char *copy;
 	size_t i = 0, j = 0;
 
 	if (!line)

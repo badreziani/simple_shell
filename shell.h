@@ -11,7 +11,8 @@ char *_strdup(const char *);
 int _strcmp(char *, char *);
 char *_strcpy(char *, const char *);
 char *prompt(void);
-void free_array(char **, size_t);
+void free_array(char **);
 size_t count_tokens(char *);
-char **tokenize(char *);
+char **split_line(char *);
+int execute_cmd(char **, char **, char **);
 #endif

@@ -2,16 +2,16 @@
 
 /**
  * main - The entry point of the shell
- * @ac: number of items in av
- * @av: NULL terminated array of strings
+ * @argc: number of items in av
+ * @argv: NULL terminated array of strings
+ * @env: NULL terminated array of strings
  * Return: 0
  */
-int main(__attribute__((unused))int ac, __attribute__((unused))char **av)
+int main(__attribute__((unused))int argc, char **argv, char **env)
 {
 	char *line = NULL;
-	char **args = NULL;
+	char **tokens = NULL;
 	int status = 0;
-	size_t i = 0;
 
 	while (1)
 	{
@@ -24,19 +24,14 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av)
 			line = NULL;
 			return (status);
 		}
-		args = tokenize(line);
-		if (!args)
+		tokens = split_line(line);
+		if (!tokens)
 		{
 			free(line);
 			continue;
 		}
-		while (args[i])
-		{
-			printf("=>%s\n",args[i]);
-			i++;
-		}
 		free(line);
-		free_array(args, i);
+		status = execute_cmd(tokens, argv, env);
 	}
 	return (0);
 }
