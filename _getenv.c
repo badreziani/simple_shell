@@ -21,6 +21,7 @@ char *_getenv(char *name, char **env)
 			break;
 		}
 		i++;
+		free(line);
 	}
 	v_copy = strdup(val);
 	free(line);
