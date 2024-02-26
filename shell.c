@@ -12,10 +12,12 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 	char *line = NULL;
 	char **tokens = NULL;
 	int estatus = 0;
-
+	
 	while (1)
 	{
-		line = prompt();
+		if (isatty(0) == 1)
+			_puts("$ ");
+		line = input();
 		if (!line)
 		{
 			if (isatty(0) == 1)

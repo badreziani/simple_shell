@@ -8,22 +8,30 @@
  */
 int execute_cmd(char **tokens, char **argv, char **env)
 {
+	char *full_cmd;
 	pid_t pid;
 	int wstatus;
+	(void)argv;
 
+	full_cmd = get_full_cmd(tokens[0], env);
+	if (!full_cmd)
+	{
+		free_array(tokens);
+		return(127);
+	}
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(tokens[0], tokens, env) == -1)
+		if (execve(full_cmd, tokens, env) == -1)
 		{
-			perror(argv[0]);
 			free_array(tokens);
-			exit(0);
+			free(full_cmd);
 		}
 	}
 	else
 	{
 		wait(&wstatus);
+		free(full_cmd);
 		free_array(tokens);
 	}
 	return (WEXITSTATUS(wstatus));

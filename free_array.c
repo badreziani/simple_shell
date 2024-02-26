@@ -13,8 +13,7 @@ void free_array(char **arr)
 	while (arr[i])
 	{
 		free(arr[i]);
-		arr[i] = NULL;
 		i++;
 	}
-	free(arr), arr = NULL;
+	free(arr);
 }
