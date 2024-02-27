@@ -33,7 +33,10 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 			continue;
 		}
 		free(line);
-		estatus = execute_cmd(tokens, argv, env, count);
+		if (is_func(tokens[0]))
+			execute_func(tokens, env);
+		else
+			estatus = execute_cmd(tokens, argv, env, count);
 	}
 	return (0);
 }

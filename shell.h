@@ -21,4 +21,6 @@ char *get_full_cmd(char*, char **);
 char *join_cmd(char *, char *, char *);
 char *convert_uint(unsigned int);
 void _perror(char *, char *, char *);
+int is_func(char *);
+void execute_func(char **, char **);
 #endif
