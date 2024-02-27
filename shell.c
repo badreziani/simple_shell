@@ -16,6 +16,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 
 	while (1)
 	{
+		/* Test if interactive mode */
 		if (isatty(0) == 1)
 			_puts("$ ");
 		line = input();
