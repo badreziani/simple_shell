@@ -26,7 +26,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 			return (estatus);
 		}
 		count++;
-		tokens = split_line(line);
+		tgkens = split_line(line);
 		if (!tokens)
 		{
 			free(line);

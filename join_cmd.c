@@ -9,6 +9,7 @@
 char *join_cmd(char *full_cmd, char *path, char *cmd)
 {
 	size_t i, j;
+
 	for (i = 0; path[i] != '\0'; i++)
 		full_cmd[i] = path[i];
 	full_cmd[i] = '/';
