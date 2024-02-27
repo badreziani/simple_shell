@@ -6,6 +6,7 @@
  * @cmd: the short command
  * Return: the full command
  */
+
 char *join_cmd(char *full_cmd, char *path, char *cmd)
 {
 	size_t i, j;
