@@ -6,16 +6,18 @@
  * @env: NULL terminated array of string
  * Return: the status of the execution
  */
-int execute_cmd(char **tokens, char **argv, char **env)
+int execute_cmd(char **tokens, char **argv, char **env, unsigned int count)
 {
-	char *full_cmd;
+	char *full_cmd, *i;
 	pid_t pid;
-	int wstatus;
-	(void)argv;
+	int wstatus; 
 
 	full_cmd = get_full_cmd(tokens[0], env);
 	if (!full_cmd)
 	{
+		i = convert_uint(count);
+		_perror(argv[0], i, tokens[0]);
+		free(i);
 		free_array(tokens);
 		return(127);
 	}
