@@ -3,7 +3,7 @@
 /**
  * execute_func - executes a function
  * @tokens: array of tokens
- * @env: env var
+ * @env: NULL terminated array of strings
  * Return: Nothing
  */
 void execute_func(char **tokens, char **env)
