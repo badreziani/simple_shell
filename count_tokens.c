@@ -14,6 +14,7 @@ size_t count_tokens(char *line)
 	if (!line)
 		return (0);
 	token = strtok(line, d);
+	/*this loop take the rest of tokens*/
 	while (token)
 	{
 		i++;
