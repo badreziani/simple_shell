@@ -7,5 +7,5 @@
  */
 int is_func(char *cmd)
 {
-	return _strcmp(cmd, "exit") == 0 || _strcmp(cmd, "env") == 0;
+	return (_strcmp(cmd, "exit") == 0 || _strcmp(cmd, "env") == 0);
 }
