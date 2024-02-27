@@ -2,13 +2,14 @@
 
 /**
  * execute_func - executes a function
- * @func: the function to execute
+ * @tokens: array of tokens
+ * @env: env var
  * Return: Nothing
  */
 void execute_func(char **tokens, char **env)
 {
 	size_t i;
-	
+
 	if (_strcmp(tokens[0], "exit") == 0)
 	{
 		free_array(tokens);
