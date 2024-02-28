@@ -12,6 +12,8 @@ char *_getenv(char *name, char **env)
 	char *d = "=\n";
 	unsigned int i = 0;
 
+	if (!env)
+		return (NULL);
 	while (env[i])
 	{
 		line = _strdup(env[i]);
