@@ -8,10 +8,10 @@
  */
 void _perror(char *sh_name, char *i, char *cmd)
 {
-	_puts(sh_name);
-	_puts(": ");
-	_puts(i);
-	_puts(": ");
-	_puts(cmd);
-	_puts(": not found\n");
+	_putr(sh_name);
+	_putr(": ");
+	_putr(i);
+	_putr(": ");
+	_putr(cmd);
+	_putr(": not found\n");
 }
