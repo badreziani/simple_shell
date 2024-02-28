@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
+
 size_t _strlen(const char *);
 ssize_t _puts(char *);
 ssize_t _putr(char *);
