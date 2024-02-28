@@ -11,22 +11,26 @@ char *_getenv(char *name, char **env)
 	char *key, *val = NULL, *line, *v_copy;
 	char *d = "=\n";
 	unsigned int i = 0;
+	int flag = 0;
 
-	if (!env)
-		return (NULL);
 	while (env[i])
 	{
 		line = _strdup(env[i]);
+		if (!line)
+			return (NULL);
 		key = strtok(line, d);
 		if (_strcmp(key, name) == 0)
 		{
+			flag = 1;
 			val = strtok(NULL, d);
 			break;
 		}
 		i++;
 		free(line);
 	}
-	v_copy = strdup(val);
+	if (flag == 0)
+		return (NULL);
+	v_copy = _strdup(val);
 	free(line);
 	return (v_copy);
 }

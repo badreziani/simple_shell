@@ -10,8 +10,6 @@ char *_strdup(const char *s)
 	char *copy = NULL;
 	size_t i = 0;
 
-	if (!s)
-		return (NULL);
 	i = _strlen(s);
 	if (i == 0)
 		return (NULL);

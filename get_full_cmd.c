@@ -34,7 +34,8 @@ char *get_full_cmd(char *cmd, char **env)
 				return (full_cmd);
 			}
 		}
-		free(full_cmd);
+		if (full_cmd)
+			free(full_cmd);
 		path = strtok(NULL, d);
 	}
 	free(path_s);
