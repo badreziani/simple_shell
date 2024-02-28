@@ -16,7 +16,6 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 
 	while (1)
 	{
-		/* Test if interactive mode */
 		if (isatty(0) == 1)
 			_puts("$ ");
 		line = input();
@@ -27,6 +26,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 			return (estatus);
 		}
 		count++;
+
 		tokens = split_line(line);
 		if (!tokens)
 		{
